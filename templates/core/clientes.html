@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Registrar Cliente Nuevo {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for c in clientes %}
+        <div class="collection">
+            <a href="{% url 'detalle_cliente' pk=c.pk %}" class="collection-item"> <b>{{c.nombre_cliente}} </b>- {{c.direccion_cliente}} - {{c.telefono_cliente}}</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

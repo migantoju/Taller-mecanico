@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Detalle {{cliente.nombre_cliente}} {% endblock title %}
+
+{% block content %}
+
+<div class="container" style="background-color:#2ec997; text-align:center;">
+    <div class="row">
+        <div class="col s12">
+            <h1>{{cliente.nombre_cliente}}</h1>
+            <h3>{{cliente.direccion_cliente}}</h3>
+            <h3>{{cliente.telefono_cliente}}</h3>
+            <hr>
+            {% for v in vehiculo %}
+            <h3>{{v.matricula}}</h3>
+            <h3>{{v.modelo_vehiculo}}</h3>
+            <h3>{{v.color_vehiculo}}</h3>
+            <h3>{{v.fecha_entrada_vehiculo}}</h3>
+            {% endfor %}
+        </div>
+        <hr>
+        <h4>Su vehiculo esta siendo atentido por:</h4>
+        <h3>{{mecanico}}</h3>
+        {% for r in responsable %}
+            nombre mecanico: {{r.responsable}}
+        {% endfor %}
+    </div>    
+</div>             
+{% endblock content %}

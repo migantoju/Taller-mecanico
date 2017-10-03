@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+    {% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %} {% endblock title %} </title>
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+</head>
+<body>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    {% if request.user.is_authenticated %}
+                    <li {% if section == 'nuevo' %} class="active" {% endif %}>
+                        <a href="{% url 'nuevo_cliente' %}">Agregar Cliente</a>
+                    </li>
+                    <li {% if section == 'clientes' %} class="active" {% endif %}>
+                        <a href="{% url 'clientes' %}">Lista de Clientes</a>
+                    </li>
+                    <li {% if section == 'nuevov' %} class="active" {% endif %}>
+                        <a href="{% url 'nuevo_vehiculo' %}">Nuevo Vehiculo</a>
+                    </li>
+                    <li {% if section == 'nuevom' %} class="active" {% endif %}>
+                        <a href="{% url 'nuevo_mecanico' %}">Nuevo Mecanico</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    {% block content %}
+    {% endblock content %}
+</body>
+{% block footer %}
+{% endblock footer %}
+
+<script src="{% static 'js/materialize.min.js' %}"></script>
+</html>
